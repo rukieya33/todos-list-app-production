@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-   res.sendFile(path.join(__dirname, 'public', 'home.html'));
+   res.send('Welcome to akua backend');
 });
 
 module.exports = router;
