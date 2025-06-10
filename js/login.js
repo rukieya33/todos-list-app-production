@@ -4,7 +4,7 @@ loginButton.addEventListener('submit', async (event) => {
 let email = document.getElementById('email').value;
 let password = document.getElementById('password').value;
 
-        await fetch('https://todos-list-app.onrender.com/logins', {
+        await fetch('https://https://todos-list-app-production.onrender.com/logins', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
