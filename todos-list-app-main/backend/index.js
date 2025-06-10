@@ -15,6 +15,12 @@ app.use(cors());
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Default route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
