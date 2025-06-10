@@ -10,7 +10,7 @@ const port = 3000;
 // const cors = require('cors'); // CORS middleware to allow cross-origin requests    
 //app.options('*', cors()); // Enable pre-flight requests for all routes
 
-app.use(cors());
+app.use(cors(origin:'*'));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 app.use('/', home);
 app.use('/', register);
