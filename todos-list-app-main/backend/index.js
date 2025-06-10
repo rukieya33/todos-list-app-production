@@ -2,7 +2,6 @@ const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
 const express = require('express');
-const path =  require('path');
 const app = express();
 const cors = require('cors');
 const port = 3000;
@@ -15,11 +14,7 @@ app.use(cors());
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route to serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
