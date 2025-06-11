@@ -1,4 +1,4 @@
-const front = require("./router/app");
+
 const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
@@ -13,7 +13,7 @@ const port = 3000;
 
 app.use(cors({origin:'https://sage-youtiao-e6765a.netlify.app/'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
-app.use('/', front);
+
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
