@@ -8,8 +8,7 @@ let password = document.getElementById('password').value;
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*', // Allow all origins                
+                'Content-Type': 'application/json'       
             },
             body: JSON.stringify({
                 email: email,
