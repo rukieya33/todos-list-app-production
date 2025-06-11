@@ -1,4 +1,3 @@
-const frontend =  require("./router/app");
 const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
@@ -11,9 +10,8 @@ const port = 3000;
 // const cors = require('cors'); // CORS middleware to allow cross-origin requests    
 //app.options('*', cors()); // Enable pre-flight requests for all routes
 
-app.use(cors({origin:'*'}));
+app.use(cors());
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
-app.use('/', frontend);
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
