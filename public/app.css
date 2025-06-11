@@ -1,4 +1,4 @@
-@import '../styles/home_components/navbar.css';
+@import './home_components/navbar.css';
 
 header{
     background-color: lightyellow;
