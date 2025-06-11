@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 
 router.use(express.static(path.join(__dirname, 'public')));
-router.get('/', (req, res) => {
+router.get('/akua', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
