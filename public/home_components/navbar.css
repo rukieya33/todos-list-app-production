@@ -1,0 +1,70 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 20rem;
+  background-color: #f1f1f1;
+  margin-top:10rem; 
+  position: relative; 
+  height:140rem;
+  bottom:3rem;
+  border-radius: 1rem;
+  border:lightblue 1px solid;
+}
+footer {
+  background-color: lightyellow;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+ margin-top:0;
+  bottom:2rem;
+  width:98%;
+  height:20rem;
+}
+body{
+  overflow-x: hidden;
+}
+li a {
+  display: block; 
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  position: relative;
+  left:3rem;
+  width:13rem;
+  text-align: justify;
+  border-radius: 0.5rem;
+  height:3rem;
+}
+
+ul p  {
+  
+  position: relative;
+  bottom:17rem;
+  text-align: center;
+}
+
+h3{
+  position: relative;
+  bottom:16rem;
+
+}
+h2{
+  position: relative;
+  bottom:145rem;
+  left: 25rem;
+}
+li a > img{
+  margin-right:2rem;
+  position: relative;
+  top:0.5rem;
+}
+/* Change the link color on hover */
+li a:hover {
+  background-color:orange;
+  color: lightyellow;
+  position: relative;
+  left:3rem;
+  border-radius: 0.5rem;
+  height:3rem;
+}
