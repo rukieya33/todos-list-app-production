@@ -2,6 +2,7 @@ const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
 const express = require('express');
+
 const app = express();
 const cors = require('cors');
 const port = 3000;
@@ -15,7 +16,6 @@ app.use('/', home);
 app.use('/', register);
 app.use('/', login);
 
-});
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

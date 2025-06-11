@@ -72,7 +72,7 @@ document.getElementById('uploadButton').addEventListener('change', function(even
     document.getElementById('uploadButton').style.display = 'none'; // Hide the upload button if an image is already set
 
         
-  
+    
       
 });
 
