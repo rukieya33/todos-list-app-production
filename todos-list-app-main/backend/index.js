@@ -25,3 +25,8 @@ wss.on('connection', (ws) => {
   console.log('WebSocket connected');
   ws.send('Hello from backend');
 });
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
