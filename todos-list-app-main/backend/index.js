@@ -3,8 +3,6 @@ const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
 const express = require('express');
-const http = require('http');
-const WebSocket = require('ws');
 const app = express();
 const cors = require('cors');
 const port = 3000;
@@ -18,15 +16,8 @@ app.use(cors({origin:'*'}));
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server, path: '/ws' });
-
-wss.on('connection', (ws) => {
-  console.log('WebSocket connected');
-  ws.send('Hello from backend');
-});
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
