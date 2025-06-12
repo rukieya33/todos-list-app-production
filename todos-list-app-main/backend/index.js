@@ -25,9 +25,3 @@ wss.on('connection', (ws) => {
   console.log('WebSocket connected');
   ws.send('Hello from backend');
 });
-
-
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
