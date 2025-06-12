@@ -15,6 +15,9 @@ const port = 3000;
 app.use(cors({origin:'*'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 
+app.use('/', home);
+app.use('/', register);
+app.use('/', login);
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server, path: '/ws' });
 
@@ -24,9 +27,6 @@ wss.on('connection', (ws) => {
 });
 
 
-app.use('/', home);
-app.use('/', register);
-app.use('/', login);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
