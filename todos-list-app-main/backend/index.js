@@ -12,7 +12,7 @@ const port = 3000;
 // const cors = require('cors'); // CORS middleware to allow cross-origin requests    
 //app.options('*', cors()); // Enable pre-flight requests for all routes
 
-app.use(cors({origin:'https://todos-list-app-production-frontend.onrender.com'}));
+app.use(cors({origin:'*'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 
 const server = http.createServer(app);
