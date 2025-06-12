@@ -25,7 +25,7 @@ let password = document.getElementById('password').value;
             
            if (sessionStorage.getItem('logged_first') && sessionStorage.getItem('logged_last') && sessionStorage.getItem('logged_email'))
            {
-            window.location.href = '../view/my_profile.html';
+            window.location.href = './view/my_profile.html';
            }
         }
         ).catch(error => {
