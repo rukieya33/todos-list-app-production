@@ -9,7 +9,7 @@ let email = document.getElementById('email').value;
 let password = document.getElementById('password').value;
     try {
         
-        fetch('wss://todos-list-app-production.onrender.com/ws/registers', {
+        fetch('https://todos-list-app-production-backend.onrender.com/registers', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
