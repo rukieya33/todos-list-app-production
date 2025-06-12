@@ -38,9 +38,22 @@ const conn = () => {
         console.log('Database connection closed');
         return false; // User already exists
     }
-    console.log('User does not exist, proceeding with registration');
+   
+const registerUser = async(firstName, lastName, email, password) =>{
+    CREATE TABLE IF NOT EXISTS register (
+  id SERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  psw TEXT NOT NULL
+);
+
+
+conn().query(createTableQuery)
+  .then(() => {console.log('✅ Table checked/created')
+                console.log('User does not exist, proceeding with registration');
     // If the user does not exist, insert the new user
-    const insertUserQuery = 'INSERT INTO register(first_name, last_name, email, register_id, psw) VALUES($1, $2, $3, $4, $5) RETURNING *';
+    const insertUserQuery = 'INSERT INTO register(first_name, last_name, email, psw) VALUES($1, $2, $3, $4, $5) RETURNING *';
     // Prepare the values for the query
     const values = [firstName, lastName, email, Math.floor(Math.random() * 1000000), password];
     // Connect to the database
@@ -49,18 +62,6 @@ const conn = () => {
     }).catch(err => {
         console.error('Database connection error:', err);
     });
-const registerUser = async(firstName, lastName, email, password) =>{
-    CREATE TABLE IF NOT EXISTS register (
-  id SERIAL PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  password TEXT NOT NULL
-);
-`;
-
-conn().query(createTableQuery)
-  .then(() => {console.log('✅ Table checked/created')
   res = await connection.query(insertUserQuery, values);
     // Close the database connection
     connection.end();
