@@ -3,7 +3,7 @@ const { Client } = require('pg');
 const conn = () => {
     const connection = new Client({
         user: 'postgres',
-        host: 'localhost',
+        host: 'to_do_db.onrender.com',
         database: 'to_do_db',
         password: 'roses',
         port: 5432,
