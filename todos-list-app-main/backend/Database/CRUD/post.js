@@ -11,11 +11,11 @@ const conn = () => {
     
         // Connection successful
     console.log('Connected to the database successfully');
+    
     return connection;
   }
-const registerUser = async(firstName, lastName, email, password) =>{
-    // Variable to hold the database connection
-   
+
+
     const connection = conn();
     // Connect to the database
     await connection.connect().then(() => {
@@ -49,8 +49,19 @@ const registerUser = async(firstName, lastName, email, password) =>{
     }).catch(err => {
         console.error('Database connection error:', err);
     });
-    // Execute the query to insert the user data
-    res = await connection.query(insertUserQuery, values);
+const registerUser = async(firstName, lastName, email, password) =>{
+    CREATE TABLE IF NOT EXISTS register (
+  id SERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL
+);
+`;
+
+conn().query(createTableQuery)
+  .then(() => {console.log('✅ Table checked/created')
+  res = await connection.query(insertUserQuery, values);
     // Close the database connection
     connection.end();
     console.log('Database connection closed');
@@ -60,9 +71,17 @@ const registerUser = async(firstName, lastName, email, password) =>{
     } else {
         console.log('User registration failed');
     }
+    }
+    return res.rowCount > 0;
+    })
+  .catch(err => console.error('❌ Table creation error:', err));
+    // Variable to hold the database connection
+   
+    // Execute the query to insert the user data
+    
     // Return true if the user was registered successfully
 
-    return res.rowCount > 0;
+    
   };
   
 const loginUser = async(email, password) => {
