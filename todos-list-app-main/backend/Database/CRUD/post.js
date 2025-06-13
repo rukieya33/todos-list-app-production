@@ -71,11 +71,13 @@ connection.query(createTableQuery)
     // Check if the insertion was successful
     if (res.rowCount > 0) {
         console.log('User registered successfully:', res.rows[0]);
+        return 'User registered successfully';
     } else {
         console.log('User registration failed');
+        return 'User registration failed';
     }
 
-    return res.rowCount > 0;
+    
     })
   .catch(err => console.error('❌ Table creation error:', err));
 
