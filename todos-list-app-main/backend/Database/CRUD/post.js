@@ -33,7 +33,7 @@ CREATE TABLE registration (
   password TEXT NOT NULL
 );
 `;
-conn().query(createTableQuery)
+connection.query(createTableQuery)
   .then(async () => {
       
       console.log('✅ Table checked/created')
