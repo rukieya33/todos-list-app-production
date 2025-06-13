@@ -72,15 +72,10 @@ conn().query(createTableQuery)
     } else {
         console.log('User registration failed');
     }
-    }
+
     return res.rowCount > 0;
     })
   .catch(err => console.error('❌ Table creation error:', err));
-    // Variable to hold the database connection
-   
-    // Execute the query to insert the user data
-    
-    // Return true if the user was registered successfully
 
     
   };
