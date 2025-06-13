@@ -21,17 +21,28 @@ document.getElementById('uploadButton').addEventListener('change', function(even
       imgContainer.style.marginBottom = '20px'; // Spacing between each image container
 
       var img = document.createElement('img');
-      img.src = URL.createObjectURL(file);
+     try {
+      const response = await fetch('https://todos-list-app-production-backend.onrender.com/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.imageUrl) {
+        img.src = data.imageUrl;
+        img.style.display = 'block';
+      } else {
+        alert('Upload failed: No image URL returned');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Upload failed. Check console.');
+    }
       img.style.height = '100px';
       img.style.display = 'block'; // Ensure the image is displayed in a block to put it on a new line
       img.style.marginBottom = '10px';
 
- const reader = new FileReader();
-
-  reader.onload = () => {
-    const base64 = reader.result;
-    preview.src = base64;
-    localStorage.setItem('savedImage', base64); // persist image
   };
 
   if (file) {
