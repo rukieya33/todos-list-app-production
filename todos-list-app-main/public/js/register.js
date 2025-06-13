@@ -12,7 +12,6 @@ let password = document.getElementById('password').value;
         fetch('https://todos-list-app-production-backend.onrender.com/registers', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
