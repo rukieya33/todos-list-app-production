@@ -18,9 +18,10 @@ const conn = () => {
 
  const registerUser = async(firstName, lastName, email, password) =>{
    const createTableQuery = `
-CREATE TABLE IF NOT EXISTS register (
+CREATE TABLE IF NOT EXISTS registration (
   id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL
 );
@@ -38,7 +39,7 @@ conn().query(createTableQuery)
 });
  
     // Check if the user already exists
-    const checkUserQuery = 'SELECT * FROM register WHERE email = $1 AND psw = $2';
+    const checkUserQuery = 'SELECT * FROM registration WHERE email = $1 AND password = $2';
     // Prepare the values for the query
     const checkValues = [email, password];
     // Execute the query to check if the user exists
@@ -57,9 +58,9 @@ conn().query(createTableQuery)
 
                 console.log('User does not exist, proceeding with registration');
     // If the user does not exist, insert the new user
-    const insertUserQuery = 'INSERT INTO register(first_name, last_name, email, psw) VALUES($1, $2, $3, $4, $5) RETURNING *';
+    const insertUserQuery = 'INSERT INTO registration(first_name, last_name, email, password) VALUES($1, $2, $3, $4) RETURNING *';
     // Prepare the values for the query
-    const values = [firstName, lastName, email, Math.floor(Math.random() * 1000000), password];
+    const values = [firstName, lastName, email,  password];
     // Connect to the database
    
   res = await connection.query(insertUserQuery, values);
@@ -81,8 +82,8 @@ conn().query(createTableQuery)
   };
   
 const loginUser = async(email, password) => {
-
-  const text = 'SELECT * FROM register WHERE email = $1 AND psw = $2';
+ 
+  const text = 'SELECT * FROM registration WHERE email = $1 AND password = $2';
   const values = [email, password];
     // Connect to the database
     
