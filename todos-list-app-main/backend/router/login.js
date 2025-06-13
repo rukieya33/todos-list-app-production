@@ -2,7 +2,6 @@ const express = require('express');
 const post_login = require('../Database/CRUD/post.js');
 const router = express.Router();
 
-router.use(express.json());
 
 router.post('/logins', async (req, res) => {
   let email = req.body.email;
