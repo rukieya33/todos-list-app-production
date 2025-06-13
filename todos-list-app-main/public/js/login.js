@@ -7,7 +7,7 @@ let password = document.getElementById('password').value;
         await fetch('https://todos-list-app-production-backend.onrender.com/logins', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
+             
                 'Content-Type': 'application/json'       
             },
             body: JSON.stringify({
