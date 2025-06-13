@@ -2,10 +2,7 @@ const express = require('express');
 const post_login = require('../Database/CRUD/post.js');
 const router = express.Router();
 
-const bodyParser = require('body-parser');
-
-// Middleware to parse JSON bodies 
-router.use(bodyParser.json());
+router.use(express.json());
 
 router.post('/logins', async (req, res) => {
   let email = req.body.email;
