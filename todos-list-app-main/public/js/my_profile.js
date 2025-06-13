@@ -44,7 +44,13 @@ document.getElementById('uploadButton').addEventListener('change', async functio
       img.style.marginBottom = '10px';
 
   };
+ const reader = new FileReader();
 
+  reader.onload = () => {
+    const base64 = reader.result;
+    preview.src = base64;
+    localStorage.setItem('savedImage', base64); // persist image
+  };
   if (file) {
     reader.readAsDataURL(file); // converts to base64
   }
