@@ -17,6 +17,7 @@ const conn = () => {
 
 
  const registerUser = async(firstName, lastName, email, password) =>{
+     let results = "";
                  const connection = conn();
     // Connect to the database
     await connection.connect().then(() => {
@@ -71,17 +72,17 @@ connection.query(createTableQuery)
     // Check if the insertion was successful
     if (res.rowCount > 0) {
         console.log('User registered successfully:', res.rows[0]);
-        return 'User registered successfully';
+        results = 'User registered successfully';
     } else {
         console.log('User registration failed');
-        return 'User registration failed';
+        results = 'User registration failed';
     }
 
     
     })
   .catch(err => console.error('❌ Table creation error:', err));
 
-    
+    return results;
   };
   
 const loginUser = async(email, password) => {
