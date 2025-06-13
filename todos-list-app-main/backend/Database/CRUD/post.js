@@ -17,14 +17,14 @@ const conn = () => {
 
 
  const registerUser = async(firstName, lastName, email, password) =>{
-    CREATE TABLE IF NOT EXISTS register (
+   const createTableQuery = `
+CREATE TABLE IF NOT EXISTS register (
   id SERIAL PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
+  name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
-  psw TEXT NOT NULL
+  password TEXT NOT NULL
 );
-
+`;
 conn().query(createTableQuery)
   .then(async () => {
       
