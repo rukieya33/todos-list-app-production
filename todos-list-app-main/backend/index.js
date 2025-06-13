@@ -10,7 +10,7 @@ const port = 3000;
 // const cors = require('cors'); // CORS middleware to allow cross-origin requests    
 //app.options('*', cors()); // Enable pre-flight requests for all routes
 
-app.use(cors({origin:'*'}));
+app.use(cors({origin:'https://todos-list-app-production-frontend.onrender.com'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 app.use(express.json());
 app.use('/', home);
