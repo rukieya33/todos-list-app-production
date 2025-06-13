@@ -85,7 +85,7 @@ document.getElementById('uploadButton').addEventListener('change', async functio
     preview.style.backgroundSize = 'cover';
     preview.style.backgroundPosition = 'center';
     
-    document.getElementById('uploadButton').style.display = 'none'; // Hide the upload button if an image is already set
+    document.getElementById('uploadButton').style.display = 'block'; // Hide the upload button if an image is already set
 
         
     
