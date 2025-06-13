@@ -21,6 +21,9 @@ document.getElementById('uploadButton').addEventListener('change', async functio
       imgContainer.style.marginBottom = '20px'; // Spacing between each image container
 
       var img = document.createElement('img');
+        const imageInput = document.getElementById('imageInput');
+    const formData = new FormData();
+    formData.append('image', imageInput.files[0]);
      try {
       const response = await fetch('https://todos-list-app-production-backend.onrender.com/upload', {
         method: 'POST',
