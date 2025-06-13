@@ -23,7 +23,7 @@ let password = document.getElementById('password').value;
         }).then(res => res.json())
 .then(data => {
     console.log(data);
-    alert('Registration successful! Please log in.');
+    /*alert('Registration successful! Please log in.');*/
         window.location.href = '../view/login.html'; // Redirect to login page after successful registration
 })
 .catch(err => console.error(err));
