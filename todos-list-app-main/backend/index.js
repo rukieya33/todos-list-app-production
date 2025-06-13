@@ -37,14 +37,7 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({ storage });
-app.post('/upload', upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
-  res.json({
-    message: 'Upload successful!',
-    imageUrl: req.file.path, // cloudinary hosted URL
-  });
-});
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 app.use('/', home);
