@@ -18,7 +18,7 @@ router.post('/registers', async (req, res) => {
   const newUser = { firstName, lastName, email, password };
   users.push(newUser);
   const results = await post_register.registerUser(firstName, lastName, email, password)
-  if (results) {
+  if (results == 'User registered successfully') {
     console.log('Registration successful');
     // Respond with the registered user data
   res.status(200).json({ 
