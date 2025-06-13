@@ -25,7 +25,7 @@ const conn = () => {
         console.error('Database connection error:', err);
 });
    const createTableQuery = `
-CREATE TABLE registration (
+CREATE TABLE IF NOT EXISTS registration (
   id SERIAL PRIMARY KEY,
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
