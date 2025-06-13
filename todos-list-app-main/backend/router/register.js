@@ -6,7 +6,7 @@ const router = express.Router();
 
 users = []; // In-memory array to store users, replace with database in production
 router.post('/registers', async (req, res) => {
-  
+  console.log('🔸 Received /registers body on Render:', req.body);
   let firstName = req.body.first;
   let lastName = req.body.last;      
   let email = req.body.email;
