@@ -16,13 +16,27 @@ const conn = () => {
   }
 
 
-    const connection = conn();
+ const registerUser = async(firstName, lastName, email, password) =>{
+    CREATE TABLE IF NOT EXISTS register (
+  id SERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  psw TEXT NOT NULL
+);
+
+conn().query(createTableQuery)
+  .then(async () => {
+      
+      console.log('✅ Table checked/created')
+                   const connection = conn();
     // Connect to the database
     await connection.connect().then(() => {
         console.log('Database connection established');
     }).catch(err => {
         console.error('Database connection error:', err);
 });
+ 
     // Check if the user already exists
     const checkUserQuery = 'SELECT * FROM register WHERE email = $1 AND psw = $2';
     // Prepare the values for the query
@@ -39,29 +53,15 @@ const conn = () => {
         return false; // User already exists
     }
    
-const registerUser = async(firstName, lastName, email, password) =>{
-    CREATE TABLE IF NOT EXISTS register (
-  id SERIAL PRIMARY KEY,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  psw TEXT NOT NULL
-);
 
 
-conn().query(createTableQuery)
-  .then(() => {console.log('✅ Table checked/created')
                 console.log('User does not exist, proceeding with registration');
     // If the user does not exist, insert the new user
     const insertUserQuery = 'INSERT INTO register(first_name, last_name, email, psw) VALUES($1, $2, $3, $4, $5) RETURNING *';
     // Prepare the values for the query
     const values = [firstName, lastName, email, Math.floor(Math.random() * 1000000), password];
     // Connect to the database
-    await connection.connect().then(() => {
-        console.log('Database connection established');
-    }).catch(err => {
-        console.error('Database connection error:', err);
-    });
+   
   res = await connection.query(insertUserQuery, values);
     // Close the database connection
     connection.end();
