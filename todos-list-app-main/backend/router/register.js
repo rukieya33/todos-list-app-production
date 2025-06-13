@@ -12,7 +12,7 @@ router.post('/registers', async (req, res) => {
   let email = req.body.email;
   let password = req.body.psw;
 
- 
+  console.log(req.body.first)
 
   // Save new user
   const newUser = { firstName, lastName, email, password };
