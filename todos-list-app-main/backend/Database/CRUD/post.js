@@ -17,8 +17,15 @@ const conn = () => {
 
 
  const registerUser = async(firstName, lastName, email, password) =>{
+                 const connection = conn();
+    // Connect to the database
+    await connection.connect().then(() => {
+        console.log('Database connection established');
+    }).catch(err => {
+        console.error('Database connection error:', err);
+});
    const createTableQuery = `
-CREATE TABLE IF NOT EXISTS registration (
+CREATE TABLE registration (
   id SERIAL PRIMARY KEY,
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
@@ -30,13 +37,7 @@ conn().query(createTableQuery)
   .then(async () => {
       
       console.log('✅ Table checked/created')
-                   const connection = conn();
-    // Connect to the database
-    await connection.connect().then(() => {
-        console.log('Database connection established');
-    }).catch(err => {
-        console.error('Database connection error:', err);
-});
+       
  
     // Check if the user already exists
     const checkUserQuery = 'SELECT * FROM registration WHERE email = $1 AND password = $2';
