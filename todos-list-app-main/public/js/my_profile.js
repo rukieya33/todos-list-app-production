@@ -2,7 +2,7 @@
     var preview = document.getElementById('preview');
     
 
-document.getElementById('uploadButton').addEventListener('change', function(event) {
+document.getElementById('uploadButton').addEventListener('change', async function(event) {
     var files = event.target.files;
     
     // Clear any existing content
