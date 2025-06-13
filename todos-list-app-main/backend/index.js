@@ -12,7 +12,7 @@ const port = 3000;
 
 app.use(cors({origin:'*'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
-
+app.use(express.json());
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
