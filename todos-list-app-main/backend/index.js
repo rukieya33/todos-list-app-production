@@ -18,7 +18,7 @@ const port = 3000;
 app.use(cors({origin:'https://todos-list-app-production-frontend.onrender.com'}));
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 app.use(express.json());
-app.use(express.static('public'));
+
 
 // Configure Cloudinary
 cloudinary.config({
