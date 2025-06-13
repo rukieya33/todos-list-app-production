@@ -65,8 +65,7 @@ document.getElementById('uploadButton').addEventListener('change', async functio
       
        
       // Append the container to the preview div
-      
-    }
+
   });
   window.addEventListener('DOMContentLoaded', () => {
   const savedImage = localStorage.getItem('savedImage');
