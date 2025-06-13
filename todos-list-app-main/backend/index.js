@@ -3,6 +3,11 @@ const home = require("./router/home");
 const register = require("./router/register");
 const login = require("./router/login");
 const express = require('express');
+const multer = require('multer');
+const { v2: cloudinary } = require('cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+require('dotenv').config();
+
 const app = express();
 const cors = require('cors');
 const port = 3000;
@@ -14,6 +19,34 @@ app.use(cors({origin:'https://todos-list-app-production-frontend.onrender.com'})
  // Enable CORS for all origins // Middleware to parse URL-encoded bodies
 app.use(express.json());
 app.use(express.static('public'));
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
+// Setup storage
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'my_uploads', // optional folder name in Cloudinary
+    allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+  },
+});
+
+const upload = multer({ storage });
+app.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+
+  res.json({
+    message: 'Upload successful!',
+    imageUrl: req.file.path, // cloudinary hosted URL
+  });
+});
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
 app.use('/', home);
 app.use('/', register);
 app.use('/', login);
