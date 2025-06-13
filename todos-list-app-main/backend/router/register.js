@@ -4,10 +4,7 @@ const router = express.Router();
 // Middleware to parse JSON bodies
  // Enable CORS for all origins
 
-const bodyParser = require('body-parser');
-
-// Middleware to parse JSON bodies 
-router.use(bodyParser.json());
+router.use(express.json());
 users = []; // In-memory array to store users, replace with database in production
 router.post('/registers', async (req, res) => {
   
