@@ -24,7 +24,7 @@ let password = document.getElementById('password').value;
   console.log(data);
 
     /*alert('Registration successful! Please log in.');*/
-        window.location.href = '../view/login.html'; // Redirect to login page after successful registration
+        //window.location.href = '../view/login.html'; // Redirect to login page after successful registration
 
 
 });
